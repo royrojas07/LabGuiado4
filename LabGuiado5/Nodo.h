@@ -8,9 +8,12 @@
 
 #include <random>
 #include <ostream>
+#include <string>
 using namespace std;
 
-class Nodo {
+#include "Objeto.h"
+
+class Nodo : public Objeto{
 public:
     // Representa un nodo de la red de computadores sobre la cual se aplica la simulación
     // de dispersión de virus.
@@ -34,6 +37,16 @@ public:
     // MOD: *this.
     // EFE: cambia el estado del nodo a ne.
     void modEstado(E ne);
+    
+    virtual bool operator==(const Objeto& o) const;
+    
+    virtual bool operator!=(const Objeto& o) const;
+    
+    virtual Objeto& clonar() const;
+    
+    virtual string toString() const;
+    
+    virtual Objeto& operator=(const Objeto& o);
     
 private:
     E estado; // representa el estado del nodo

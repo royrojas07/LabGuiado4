@@ -51,14 +51,14 @@ int main(int argc, char** argv) {
         archivoExperimentos >> repeticiones;
         archivoExperimentos >> construccion;
         archivoExperimentos.get();
-        if( construccion == 3 ){
+        if( construccion == 2 ){
             archivoExperimentos >> nombreRedEntrada;
             ifstream archivo( nombreRedEntrada.c_str() );
             Grafo grafo1( archivo );
             grafo = grafo1;
         } else {
             archivoExperimentos >> N;
-            if( construccion == 2 ){
+            if( construccion == 1 ){
                 archivoExperimentos >> K;
                 archivoExperimentos >> p;
                 Grafo grafo1( N, K, p );
