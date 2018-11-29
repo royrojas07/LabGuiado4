@@ -95,6 +95,12 @@ public:
     // NOTA: retorna por referencia para que pueda ser modificado en el contexto
     // invocador.
     Objeto& operator[](int idVrt);
+    
+    // REQ: 0 <= idVrt < N.
+    // EFE: retorna el vértice con índice idVrt.
+    // NOTA: retorna por referencia constante para que NO pueda ser modificado en el contexto
+    // invocador.
+    const Objeto& obtVrt(int idVrt) const;
 
     /* MÉTODOS OBSERVADORES ESPECIALES */
     

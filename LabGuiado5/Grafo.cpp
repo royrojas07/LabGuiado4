@@ -12,7 +12,7 @@ Grafo::Grafo(ifstream& archivo): grf_nodos(archivo, Nodo()){
 
 }
 
-Grafo::Grafo(const Grafo& orig): grf_nodos(orig){
+Grafo::Grafo(const Grafo& orig): grf_nodos( orig.grf_nodos ){
 
 }
 
@@ -36,7 +36,8 @@ int Grafo::obtCntVrtAdys(int idVrt) const {
 }
 
 Nodo Grafo::operator[](int idVrt) const {
-    return grf_nodos[idVrt];
+    Nodo nodo = static_cast<Nodo>( grf_nodos.obtVrt(idVrt) );
+    return nodo;
 }
 
 int Grafo::obtTotArc() const {
@@ -50,7 +51,7 @@ int Grafo::obtTotVrt() const {
 int Grafo::obtTotVrtSusceptibles() const {
     int cantSusceptibles = 0;
     for( int i = 0; i < grf_nodos.obtTotVrt(); i++ ){
-        //if( grf_nodos[i].obtEstado() == Nodo::E::S )
+        if( grf_nodos.obtVrt(i).toString() == "Susceptible" )
             cantSusceptibles++;
     }
     return cantSusceptibles;
@@ -59,7 +60,7 @@ int Grafo::obtTotVrtSusceptibles() const {
 int Grafo::obtTotVrtInfectados() const {
     int cantInfectados = 0;
     for( int i = 0; i < grf_nodos.obtTotVrt(); i++ ){
-        //if( grf_nodos[i].obtEstado() == Nodo::E::I )
+        if( grf_nodos.obtVrt(i).toString() == "Infectado" )
             cantInfectados++;
     }
     return cantInfectados;
@@ -68,14 +69,15 @@ int Grafo::obtTotVrtInfectados() const {
 int Grafo::obtTotVrtResistentes() const {
     int cantResistentes = 0;
     for( int i = 0; i < grf_nodos.obtTotVrt(); i++ ){
-        //if( grf_nodos[i].obtEstado() == Nodo::E::R )
+        if( grf_nodos.obtVrt(i).toString() == "Resistente" )
             cantResistentes++;
     }
     return cantResistentes;
 }
 
 Nodo& Grafo::operator[](int idVrt) {
-    return grf_nodos[idVrt];
+    Nodo& nodo = static_cast<Nodo&>( grf_nodos[idVrt] );
+    return nodo;
 }
 
 double Grafo::coeficienteLocalAgrupamiento(int idVrt) const {

@@ -109,9 +109,6 @@ GrafoAbst::GrafoAbst(const GrafoAbst& orig) {
     for( int i = 0; i < orig.obtTotVrt(); i++ ){
         Vrt vertice( orig.vectorVrts[i] );
         vectorVrts[i] = vertice;
-//      Vrt<T> vertice( orig[i] );
-//      vectorVrts[i] = vertice;
-//      vectorVrts[i].lstAdy = orig.vectorVrts[i].lstAdy;
     }
 }
 
@@ -174,6 +171,10 @@ int GrafoAbst::obtTotVrt() const {
 }
 
 Objeto& GrafoAbst::operator[](int idVrt) {
+    return *(vectorVrts[idVrt].obj_ptr);
+}
+
+const Objeto& GrafoAbst::obtVrt(int idVrt) const{
     return *(vectorVrts[idVrt].obj_ptr);
 }
 

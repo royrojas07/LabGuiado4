@@ -37,7 +37,7 @@ bool Nodo::operator!=(const Objeto& o) const{
 }
 
 Nodo::Objeto& clonar() const{
-    
+    return *this;
 }
 
 string Nodo::toString() const{
