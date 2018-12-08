@@ -28,6 +28,7 @@ public:
     };
     
     Nodo();
+    Nodo(const Objeto& orig);
     Nodo(const Nodo& orig);
     virtual ~Nodo();
     

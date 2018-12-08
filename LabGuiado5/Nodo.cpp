@@ -11,6 +11,15 @@ using namespace std;
 Nodo::Nodo() : estado(S) {
 }
 
+Nodo::Nodo(const Objeto& orig){
+    if( orig.toString() == "Susceptible" )
+        estado = S;
+    else if( orig.toString() == "Infectado" )
+        estado = I;
+    else if( orig.toString() == "Resistente" )
+        estado = R;
+}
+
 Nodo::Nodo(const Nodo& orig) : estado(orig.estado) {
 }
 
@@ -26,18 +35,16 @@ void Nodo::modEstado(E ne) {
 }
 
 bool Nodo::operator==(const Objeto& o) const{
-    bool v = false;
-    if( toString() == o.toString() )
-        v = true;
-    return v;
+    return toString() == o.toString();
 }
 
 bool Nodo::operator!=(const Objeto& o) const{
     return !(*this == o);
 }
 
-Nodo::Objeto& clonar() const{
-    return *this;
+Objeto& Nodo::clonar() const{
+    Nodo* clon = new Nodo(*this);
+    return *clon;
 }
 
 string Nodo::toString() const{
@@ -48,16 +55,15 @@ string Nodo::toString() const{
         s = "Infectado";
     else if( estado == 2 )
         s = "Resistente";
-    s << estado;
     return s;
 }
 
 Objeto& Nodo::operator=(const Objeto& o){
     if( o.toString() == "Susceptible" )
-        estado = 0;
+        estado = S;
     else if( o.toString() == "Infectado" )
-        estado = 1;
+        estado = I;
     else if( o.toString() == "Resistente" )
-        estado = 2;
+        estado = R;
     return *this;
 }

@@ -125,7 +125,7 @@ public:
     bool conformidadPareto() const;
 
 private:
-
+    Nodo nodo;
     GrafoAbst grf_nodos; // GrafoGnr especializado con Nodo
 };
 

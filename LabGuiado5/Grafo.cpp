@@ -1,14 +1,14 @@
 #include "Grafo.h"
 
-Grafo::Grafo(int N, double p): grf_nodos(N, p, Nodo()){
+Grafo::Grafo(int N, double p): grf_nodos(N, p, nodo){
 
 }
 
-Grafo::Grafo(int N, int K, double beta): grf_nodos(N, K, beta, Nodo()){
-    
+Grafo::Grafo(int N, int K, double beta): grf_nodos(N, K, beta, nodo){
+
 }
 
-Grafo::Grafo(ifstream& archivo): grf_nodos(archivo, Nodo()){
+Grafo::Grafo(ifstream& archivo): grf_nodos(archivo, nodo){
 
 }
 
@@ -36,8 +36,7 @@ int Grafo::obtCntVrtAdys(int idVrt) const {
 }
 
 Nodo Grafo::operator[](int idVrt) const {
-    Nodo nodo = static_cast<Nodo>( grf_nodos.obtVrt(idVrt) );
-    return nodo;
+    return Nodo( grf_nodos.obtVrt(idVrt) );
 }
 
 int Grafo::obtTotArc() const {
