@@ -1,14 +1,14 @@
 #include "Grafo.h"
 
-Grafo::Grafo(int N, double p): grf_nodos(N, p, nodo){
+Grafo::Grafo(int N, double p): grf_nodos(N, p, (Objeto&)(*(new Nodo()))){
 
 }
 
-Grafo::Grafo(int N, int K, double beta): grf_nodos(N, K, beta, nodo){
+Grafo::Grafo(int N, int K, double beta): grf_nodos(N, K, beta, (Objeto&)(*(new Nodo()))){
 
 }
 
-Grafo::Grafo(ifstream& archivo): grf_nodos(archivo, nodo){
+Grafo::Grafo(ifstream& archivo): grf_nodos(archivo, (Objeto&)(*(new Nodo()))){
 
 }
 

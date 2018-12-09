@@ -44,21 +44,19 @@ int main(int argc, char** argv) {
             if( (i != 0 && i != 2) ){
                 if( !(parametrosSimulacion[i] <= 1.0) )
                     cout << "El valor vsc, rc o grc tomado de " << nombreExperimentos << " no se encuentra en el rango apropiado para hacer una comparacion con netlogoweb.org" << endl;
-                if( i != 4 )
-                    parametrosSimulacion[i] *= 0.10;
             }
         }
         archivoExperimentos >> repeticiones;
         archivoExperimentos >> construccion;
         archivoExperimentos.get();
-        if( construccion == 2 ){
+        if( construccion == 3 ){
             archivoExperimentos >> nombreRedEntrada;
             ifstream archivo( nombreRedEntrada.c_str() );
             Grafo grafo1( archivo );
             grafo = grafo1;
         } else {
             archivoExperimentos >> N;
-            if( construccion == 1 ){
+            if( construccion == 2 ){
                 archivoExperimentos >> K;
                 archivoExperimentos >> p;
                 Grafo grafo1( N, K, p );
